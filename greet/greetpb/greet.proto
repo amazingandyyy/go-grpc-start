@@ -47,7 +47,7 @@ service GreetService{
     rpc GreetManyTimes(GreetManyTimesRequest) returns (stream GreetManyTimesResponse) {};
     // Client streaming
     rpc LongGreet(stream LongGreetRequest) returns (LongGreetResponse) {}
-    // Client and Server streaming
-    rpc GreetEveryone(stream GreetEveryoneRequest) returns (GreetEveryoneResponse) {}
+    // Bi-directional(BiDi) streaming
+    rpc GreetEveryone(stream GreetEveryoneRequest) returns (stream GreetEveryoneResponse) {}
 }
 
