@@ -40,6 +40,14 @@ message FindMaximumResponse {
     int32 max = 1;
 }
 
+message SquareRootRequest {
+    int32 number = 1;
+}
+
+message SquareRootResponse {
+    double number_root = 1;
+}
+
 service CalculatorService {
     // Unary
     rpc Calculate(CalculatorRequest) returns (CalculatorResponse) {};
@@ -49,4 +57,8 @@ service CalculatorService {
     rpc ComputeAverage(stream ComputeAverageRequest) returns (ComputeAverageResponse) {};
     // BiDi Stream
     rpc FindMaximum(stream FindMaximumRequest) returns (stream FindMaximumResponse) {};
+    // Unary square root calculator, error handling
+    // this RPC will throw an exception if the sent number is genative
+    // the error being sent is of type INVALID_ARGUMENT
+    rpc SquareRoot(SquareRootRequest) returns (SquareRootResponse) {}
 }
